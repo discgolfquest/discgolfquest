@@ -18,6 +18,7 @@
     --ink: #1a1208;
     --muted: #7a8a72;
     --border: rgba(201,151,58,0.2);
+    --disabled: rgba(255,255,255,0.15);
   }
 
   * { margin: 0; padding: 0; box-sizing: border-box; }
@@ -150,18 +151,6 @@
     font-style: italic;
   }
 
-  /* ── DIVIDER ── */
-  .divider {
-    display: flex;
-    align-items: center;
-    gap: 0.75rem;
-    padding: 0 1.5rem;
-    margin: 0 auto;
-    max-width: 860px;
-  }
-  .divider-line { flex: 1; height: 1px; background: linear-gradient(90deg, transparent, var(--gold), transparent); opacity: 0.3; }
-  .divider-gem { width: 7px; height: 7px; background: var(--gold); transform: rotate(45deg); flex-shrink: 0; opacity: 0.6; }
-
   /* ── SECTIONS ── */
   .section {
     max-width: 860px;
@@ -217,7 +206,6 @@
   }
 
   .pitch-item:last-child { border-right: none; }
-
   .pitch-icon { font-size: 1.6rem; margin-bottom: 0.5rem; display: block; }
 
   .pitch-item h3 {
@@ -258,6 +246,10 @@
     display: flex;
     flex-direction: column;
     gap: 0.4rem;
+  }
+
+  .card.dimmed {
+    opacity: 0.45;
   }
 
   .card-icon { font-size: 1.5rem; }
@@ -317,6 +309,20 @@
 
   .btn-details:hover { border-color: var(--gold); color: var(--gold-pale); opacity: 1; }
 
+  .btn-disabled {
+    font-family: 'Cinzel', serif;
+    font-size: 0.68rem;
+    letter-spacing: 0.06em;
+    padding: 0.45rem 0.9rem;
+    background: transparent;
+    color: var(--muted);
+    border: 1px solid rgba(255,255,255,0.1);
+    border-radius: 4px;
+    white-space: nowrap;
+    cursor: default;
+    opacity: 0.5;
+  }
+
   .badge {
     display: inline-block;
     font-size: 0.58rem;
@@ -327,6 +333,19 @@
     padding: 0.15rem 0.5rem;
     border-radius: 20px;
     border: 1px solid rgba(201,151,58,0.2);
+    width: fit-content;
+  }
+
+  .badge-soon {
+    display: inline-block;
+    font-size: 0.58rem;
+    font-family: 'Cinzel', serif;
+    letter-spacing: 0.08em;
+    background: transparent;
+    color: var(--muted);
+    padding: 0.15rem 0.5rem;
+    border-radius: 20px;
+    border: 1px solid rgba(255,255,255,0.1);
     width: fit-content;
   }
 
@@ -347,6 +366,8 @@
     flex-direction: column;
     gap: 0.4rem;
   }
+
+  .game-card.dimmed { opacity: 0.45; }
 
   .game-card-top {
     display: flex;
@@ -427,7 +448,7 @@
     <li class="nav-hide"><a href="#resources">Resources</a></li>
     <li class="nav-hide"><a href="#other-games">More Games</a></li>
     <li class="nav-hide"><a href="#feedback">Feedback</a></li>
-    <li><a href="#" class="btn-nav">⚔️ Launch App</a></li>
+    <li><a href="/quest" class="btn-nav">⚔️ Launch App</a></li>
   </ul>
 </nav>
 
@@ -470,43 +491,51 @@
   <p class="section-label">Resources</p>
   <h2 class="section-title">Everything you need to play</h2>
   <div class="card-grid">
+
+    <!-- App — LIVE -->
     <div class="card">
       <span class="card-icon">📱</span>
       <h3>The App</h3>
       <p>Scorecard, card draws, character tracking. Runs offline on any phone.</p>
       <span class="badge">Free</span>
       <div class="card-actions">
-        <a href="#" class="btn-launch">Launch</a>
-        <a href="#" class="btn-details">Details</a>
+        <a href="/quest" class="btn-launch">Launch</a>
       </div>
     </div>
-    <div class="card">
+
+    <!-- Codex — coming soon -->
+    <div class="card dimmed">
       <span class="card-icon">📖</span>
       <h3>Codex</h3>
       <p>Full rules, all classes, every card. The complete reference wiki.</p>
-      <span class="badge">Free</span>
+      <span class="badge-soon">Coming Soon</span>
       <div class="card-actions">
-        <a href="#" class="btn-launch">Open</a>
+        <span class="btn-disabled">Not Yet Available</span>
       </div>
     </div>
-    <div class="card">
+
+    <!-- Print & Play — coming soon -->
+    <div class="card dimmed">
       <span class="card-icon">🖨️</span>
       <h3>Print &amp; Play</h3>
       <p>Printable card sheets to play tonight. Available on DriveThruRPG.</p>
-      <span class="badge">Coming Soon</span>
+      <span class="badge-soon">Coming Soon</span>
       <div class="card-actions">
-        <a href="#" class="btn-details">Notify Me</a>
+        <span class="btn-disabled">Not Yet Available</span>
       </div>
     </div>
-    <div class="card">
+
+    <!-- Physical Kit — coming soon -->
+    <div class="card dimmed">
       <span class="card-icon">🎒</span>
       <h3>Physical Kit</h3>
       <p>Coins, gems, drawstring bag, and card deck. The full tactile experience.</p>
-      <span class="badge">Coming Soon</span>
+      <span class="badge-soon">Coming Soon</span>
       <div class="card-actions">
-        <a href="#" class="btn-details">Notify Me</a>
+        <span class="btn-disabled">Not Yet Available</span>
       </div>
     </div>
+
   </div>
 </div>
 
@@ -515,49 +544,55 @@
   <p class="section-label">More Games</p>
   <h2 class="section-title">Quick, self-contained, great for a single session</h2>
   <div class="other-games-grid">
-    <div class="game-card">
+
+    <!-- Goblin Mode — coming soon -->
+    <div class="game-card dimmed">
       <div class="game-card-top">
         <span class="game-icon">👺</span>
         <h3>Goblin Mode</h3>
       </div>
-      <p>A chaotic 9-hole variant with token bag mechanics, hearts, and shroom wildcards. No setup, no commitment.</p>
+      <p>A chaotic 9-hole variant with token bag mechanics, hearts, and shroom wildcards.</p>
       <div class="card-actions">
-        <a href="#" class="btn-launch">Launch</a>
-        <a href="#" class="btn-details">Details</a>
+        <span class="btn-disabled">Coming Soon</span>
       </div>
     </div>
-    <div class="game-card">
+
+    <!-- Mead Hall — coming soon -->
+    <div class="game-card dimmed">
       <div class="game-card-top">
         <span class="game-icon">⛏️</span>
         <h3>Miner's Mead Hall</h3>
       </div>
-      <p>A dwarven-themed 9-hole scorecard with gem tracking and a cool grey stone aesthetic.</p>
+      <p>A dwarven-themed 9-hole scorecard with gem tracking.</p>
       <div class="card-actions">
-        <a href="#" class="btn-launch">Launch</a>
-        <a href="#" class="btn-details">Details</a>
+        <span class="btn-disabled">Coming Soon</span>
       </div>
     </div>
-    <div class="game-card">
+
+    <!-- Dingo — coming soon -->
+    <div class="game-card dimmed">
       <div class="game-card-top">
         <span class="game-icon">🟩</span>
         <h3>Dingo</h3>
       </div>
       <p>Disc golf bingo. Mark your card as you play. Custom cards via the desktop editor.</p>
       <div class="card-actions">
-        <a href="#" class="btn-launch">Launch</a>
-        <a href="#" class="btn-details">Details</a>
+        <span class="btn-disabled">Coming Soon</span>
       </div>
     </div>
-    <div class="game-card">
+
+    <!-- Dingo Editor — coming soon -->
+    <div class="game-card dimmed">
       <div class="game-card-top">
         <span class="game-icon">✏️</span>
         <h3>Dingo Editor</h3>
       </div>
-      <p>Build custom Dingo bingo cards on desktop. Copy, paste, print, or share with friends.</p>
+      <p>Build custom Dingo bingo cards on desktop. Share with friends via QR code.</p>
       <div class="card-actions">
-        <a href="#" class="btn-launch">Open Editor</a>
+        <span class="btn-disabled">Coming Soon</span>
       </div>
     </div>
+
   </div>
 </div>
 
@@ -569,7 +604,7 @@
       <h2 class="section-title" style="margin-bottom:0.5rem">Tell us how it went</h2>
       <p class="section-body" style="margin-bottom:0">Actively playtesting. Rules questions, bugs, broken cards, great moments — all welcome.</p>
     </div>
-    <a href="#" class="btn-outline">💬 Submit Feedback</a>
+    <span class="btn-disabled" style="font-size:0.78rem;padding:0.75rem 1.5rem;">💬 Coming Soon</span>
   </div>
 </div>
 
@@ -585,7 +620,7 @@
 <!-- FOOTER -->
 <footer>
   <div class="footer-logo">Disc Golf Quest</div>
-  <p>discgolf.quest &nbsp;·&nbsp; <a href="#">Codex</a> &nbsp;·&nbsp; <a href="#">Contact</a></p>
+  <p>discgolf.quest &nbsp;·&nbsp; <a href="#">Codex</a> &nbsp;·&nbsp; <span style="color:var(--muted);opacity:0.5;">Contact — Coming Soon</span></p>
 </footer>
 
 <script src="https://cdnjs.cloudflare.com/ajax/libs/qrcodejs/1.0.0/qrcode.min.js"></script>
